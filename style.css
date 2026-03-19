@@ -1,0 +1,235 @@
+
+/* опишем базовый стиль кнопки калькулятора */
+.my-btn {
+    margin-right: 5px;           /* задаем отступ от кнопки справа */
+    margin-top: 5px;             /* задаем отступ от кнопки сверху*/
+    width: 50px;                 /* задаем ширину кнопки */
+    height: 50px;                /* задаем высоту кнопки */
+    border-radius: 50%;          /* округляем кнопку */
+    border: none;                /* отключаем обводку */
+    background: #515151;         /* задаем серый цвет кнопки */
+    color: white;                /* задаем белый цвет текста внутри кнопки */
+    font-size: 1.5rem;           /* увеличим размер шрифта */
+    font-family: Arial, Helvetica, sans-serif; /* сменим шрифт */
+    cursor: pointer;             /* при наведении на кнопку курсор будет изменен
+                                    со стрелки на 'указательный палец' */
+    user-select: none;           /* отключаем возможность выделить текст внутри кнопки */
+  }
+
+  /* hover - это состояние элемента, когда на него наведен курсор */
+  .my-btn:hover {
+    background: darkgray; /* при наведение курсора на кнопку, она будет окрашена в серый */
+  }
+
+  /* active - это состояние активации элемента. В случае кнопки - нажатие на нее */
+  .my-btn:active {
+    filter: brightness(130%); /* увеличим интенсивность цвета для эффекта вспышки */
+  }
+
+  /* селектор для кнопок первостепенных операций */
+  .my-btn.primary {
+    background: #ff9801; /* цвет кнопки оранжевый */
+  }
+
+  /* селектор для кнопок второстепенных операций */
+  .my-btn.secondary {
+    background: #a6a6a6; /* цвет кнопки сервый */
+  }
+
+  /* селектор для кнопки расчета выражения (=) */
+  .my-btn.execute {
+    width: 110px;          /* сделаем кнопку шире других */
+    border-radius: 34px;   /* подкорректируем округлость */
+  }
+
+  /* селектор для поля вывода результата */
+  .result {
+    width: 220px;
+    height: 50px;
+    margin-bottom: 15px;         /* отступ снизу */
+    padding-right: 10px;         /* выступ справа */
+    background: rgb(73, 73, 73); /* цвет можно задавать и таким образом */
+    text-align: right;           /* примагнитим текст к правой стороне */
+    color: #ffffff;              /* цвет текста белый */
+    font-size: 1.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+
+
+.up_button {
+    vertical-align: middle;
+    margin-right: 5px;           /* задаем отступ от кнопки справа */
+    margin-top: 5px;
+    margin-left: 5%;              /* задаем отступ от кнопки сверху*/
+    width: 200px;                 /* задаем ширину кнопки */
+    height: 70px;                /* задаем высоту кнопки */
+    border-radius: 4%;          /* округляем кнопку */
+    border: none;                /* отключаем обводку */
+    background: #63e0f97f;         /* задаем серый цвет кнопки */
+    color: rgba(255, 255, 255, 0.678);                /* задаем белый цвет текста внутри кнопки */
+    font-size: 1.5rem;           /* увеличим размер шрифта */
+    font-family: monospace; /* сменим шрифт */
+    cursor: pointer;             /* при наведении на кнопку курсор будет изменен
+                                    со стрелки на 'указательный палец' */
+    user-select: none;           /* отключаем возможность выделить текст внутри кнопки */
+}
+
+h1 {
+  font-family: monospace;
+  color: rgba(255, 255, 255, 0.678);
+  font-size: 2rem;
+}
+
+#main_picture {
+  width: 1520px;
+  height: 600px;
+}
+
+.header {
+  background-image: linear-gradient(to right, rgb(239, 241, 246), rgba(255, 12, 158, 0.241), rgba(24, 162, 231, 0.537));
+  border-bottom: 2px solid #cccccc;
+  padding: 15px 0;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #003366;
+  text-decoration: none;
+}
+
+/* Только три кнопки */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.hero {
+  /* Фоновое изображение */
+  background-image: url('lab-table-hand-petri-scaled.PNG');
+  background-size: cover; /* Картинка покрывает всю область */
+  background-position: center; /* Центрируем картинку */
+  background-repeat: no-repeat;
+
+  /* Высота секции (можно настроить под себя) */
+  height: 72vh; /* 100% высоты окна браузера */
+  /* Или фиксированная высота: height: 500px; */
+
+  /* Для размещения контента поверх */
+  position: relative;
+
+  color: white; /* Текст будет белым на темном фоне */
+
+  /* Если картинка темная, можно затемнить фон */
+  /* background-blend-mode: overlay;
+  background-color: rgba(0,0,0,0.5); */
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  /* Меняем направление на колонку */
+  display: flex;
+  flex-direction: column;  /* Элементы друг под другом */
+  gap: 20px;                /* Расстояние между логотипом и кнопками */
+}
+
+/* Контейнер для логотипа и текста */
+.logo-container {
+  display: flex;
+  gap: 15px; /* Расстояние между картинкой и текстом */
+}
+
+/* Стили для картинки-логотипа */
+.logo-image {
+  width: 90px; /* Задайте нужный размер */
+  height: auto;
+  object-fit: contain;
+}
+
+/* Текст логотипа в 3 строки */
+.logo-text {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.2; /* Межстрочный интервал */
+  color: #4e4b4b;
+  text-transform: uppercase; /* Все заглавные, как у вас */
+  letter-spacing: 1px;
+  font-family: monospace;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;              /* Расстояние между кнопками */
+  margin-top: 1px;       /* Немного отступа сверху */
+}
+
+.nav-button {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: all 0.3s;
+  font-family: monospace;
+  font-size: 18px;
+
+}
+
+.nav-button:hover {
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+h1 {
+  font-family: monospace;
+  color: #ffffff;
+  margin-left: 50px;
+  font-size: 4rem;           /* ОЧЕНЬ КРУПНЫЙ ШРИФТ */
+  text-align: left;
+  max-width: 1000px;
+  margin-bottom: 60px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.order-button {
+  display: inline-block;
+  margin-left: 50px;
+  padding: 18px 50px;
+  font-size: 2rem;
+  font-family: monospace;
+  text-decoration: none;
+  letter-spacing: 1px;
+  color: white;
+  background-color: #4caf4fe0;  /* Зеленый цвет */
+  border: none;
+  border-radius: 35px;         /* Скругленные углы */
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
