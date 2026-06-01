@@ -21,7 +21,7 @@
 6. Применение CSS к HTML-документу
 7. Стилизация верстки калькулятора с помощью CSS
 Тема: Регистрация новых лекарственных препарато
-
+![alt text](img2.PNG)
 Сайт, с которого был взят дизайн: https://www.cphd.ru/ru/services/register/
 
 ## Дополнительное задание
@@ -195,5 +195,5 @@ body {
     gap: 8px;
     justify-content: center;
 }
-
+```
 ![alt text](calc.PNG)
