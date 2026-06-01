@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Калькулятор - КлинФармДевелопмент</title>
-  <link rel="stylesheet" href="calculator.css">
+  <title>КлинФармДевелопмент</title>
+  <link rel="stylesheet" href="style.css">
   <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
   <div>
-    <!-- Шапка без картинки, но со всеми стилями как в основном файле -->
-    <header class="hero">
+    <header class="hero_calculator">
       <div class="hero-content">
-        <!-- Логотип и текст вместе -->
         <div class="logo-container">
           <a href="main.html">
             <img src="logo.png" alt="Clinpharm Development Logo" class="logo-image">
@@ -21,30 +19,31 @@
         </div>
 
         <div class="nav-links">
-          <a href="calculator.html" class="nav-button">Калькулятор</a>
-          <a href="" class="nav-button">О нас</a>
-          <a href="" class="nav-button">Контакты</a>
+          <a href="calculator.html" class="nav-button_calculator">Калькулятор</a>
+          <a href="" class="nav-button_calculator">О нас</a>
+          <a href="" class="nav-button_calculator">Контакты</a>
         </div>
       </div>
     </header>
 
-    <!-- Основной контент - калькулятор по центру -->
     <main class="calculator-main">
       <h1 class="calculator-title">Калькулятор</h1>
 
       <div class="calculator-container">
-        <!-- блок с экраном калькулятора -->
+        <div style="text-align: left; margin-bottom: 5px;">
+          <span id="systemLabel" style="color: #d8d5d5; font-family: monospace; font-size: 14px;">bin</span>
+      </div>
         <div id="result" class="result">
           0
         </div>
 
-        <!-- блок с кнопками калькулятора -->
         <div class="calculator-buttons">
           <div class = "button-row">
             <button id = "btn_op_fact" class="my-btn secondary">!</button>
             <button id = "btn_op_sqrt" class="my-btn secondary">√</button>
             <button id = "btn_op_backspace" class="my-btn secondary">←</button>
-            <button id = "btn_op_000" class="my-btn secondary">000</button>
+            <button id="btn_op_000" class="my-btn secondary">СС</button>
+
           </div>
           <div class="button-row">
             <button id="btn_op_clear" class="my-btn secondary">C</button>
