@@ -22,7 +22,6 @@
 7. Структурирование проекта
 8. Верстка главной страницы
 9. Верстка страницы продукта
-![alt text](image.png)
 
 
 ## Задание
@@ -32,10 +31,10 @@
 1. Клонирование:
 
 До клонирования:
-![alt text](image-1.png)
+
 
 После:
-![alt text](image-2.png)
+
 ```js
 (target) => {
     const original = target.originalName || target.name;
@@ -54,7 +53,7 @@
 }
 ```
 2. Удаление
-![alt text](image-3.png)
+
 
 ```js
 (id) => {
@@ -68,7 +67,7 @@
 ```
 3. Кнопка подробнее
 
-![alt text](image-4.png)
+
 
 ```js
 else if (hash.startsWith('#product')) {
@@ -101,4 +100,3 @@ const text = descriptions[id] || "Это клонированная услуга
 
 card.querySelector('.btn-clone').onclick = () => onClone(product);
 ```
-![alt text](image-1.png)
