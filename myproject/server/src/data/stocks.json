@@ -1,0 +1,70 @@
+[
+  {
+    "id": 3,
+    "src": "https://www.cphd.ru/upload/resize_cache/iblock/eaa/646_506_2/imngcjws5gluyiu903kbbm9vhj6pcimg.jpg.webp",
+    "modelPath": "models/Palm Tree.glb",
+    "title": "",
+    "text": "Клинические исследования биоэкви- валентности, I фазы"
+  },
+  {
+    "id": 4,
+    "src": "https://www.cphd.ru/upload/iblock/bfb/gzax74pyjlf7gpmr2r1uxcvkg4kbevtb.jpg.webp",
+    "modelPath": "models/Big Tree.glb",
+    "title": "",
+    "text": "Управление данными клинических исследований"
+  },
+  {
+    "id": 6,
+    "src": "https://www.cphd.ru/upload/resize_cache/iblock/a46/646_506_2/nim3bu9uu1ijhstkxdlyyi5rqxf9jrkr.jpg.webp",
+    "modelPath": "models/Big Tree.glb",
+    "title": "",
+    "text": "Медицинское писательство"
+  },
+  {
+    "id": 7,
+    "src": "https://www.cphd.ru/upload/resize_cache/iblock/eaa/646_506_2/imngcjws5gluyiu903kbbm9vhj6pcimg.jpg.webp",
+    "modelPath": "models/Palm Tree.glb",
+    "title": "",
+    "text": "Клинические исследования биоэкви- валентности, I фазы"
+  },
+  {
+    "id": 8,
+    "src": "https://www.cphd.ru/upload/iblock/bfb/gzax74pyjlf7gpmr2r1uxcvkg4kbevtb.jpg.webp",
+    "modelPath": "models/Big Tree.glb",
+    "title": "",
+    "text": "Управление данными клинических исследований"
+  },
+  {
+    "id": 6,
+    "src": "https://www.cphd.ru/upload/resize_cache/iblock/a46/646_506_2/nim3bu9uu1ijhstkxdlyyi5rqxf9jrkr.jpg.webp",
+    "modelPath": "models/Big Tree.glb",
+    "title": "",
+    "text": "Медицинское писательство"
+  },
+  {
+    "id": 7,
+    "src": "https://www.cphd.ru/upload/resize_cache/iblock/eaa/646_506_2/imngcjws5gluyiu903kbbm9vhj6pcimg.jpg.webp",
+    "modelPath": "models/Palm Tree.glb",
+    "title": "",
+    "text": "Клинические исследования биоэкви- валентности, I фазы"
+  },
+  {
+    "id": 8,
+    "src": "https://www.cphd.ru/upload/iblock/bfb/gzax74pyjlf7gpmr2r1uxcvkg4kbevtb.jpg.webp",
+    "modelPath": "models/Big Tree.glb",
+    "title": "",
+    "text": "Управление данными клинических исследований"
+  },
+  {
+    "id": 9,
+    "src": "https://www.cphd.ru/upload/iblock/bfb/gzax74pyjlf7gpmr2r1uxcvkg4kbevtb.jpg.webp",
+    "title": "Анализ",
+    "text": "Анализ"
+  },
+  {
+    "id": 10,
+    "src": "https://www.cphd.ru/upload/iblock/bfb/gzax74pyjlf7gpmr2r1uxcvkg4kbevtb.jpg.webp",
+    "title": "Анализ крови",
+    "text": "Анализ Крови"
+  }
+]

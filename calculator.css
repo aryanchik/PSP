@@ -1,58 +1,71 @@
-/* опишем базовый стиль кнопки калькулятора */
 .my-btn {
-    margin-right: 5px;           /* задаем отступ от кнопки справа */
-    margin-top: 5px;             /* задаем отступ от кнопки сверху*/
-    width: 50px;                 /* задаем ширину кнопки */
-    height: 50px;                /* задаем высоту кнопки */
-    border-radius: 50%;          /* округляем кнопку */
-    border: none;                /* отключаем обводку */
-    background: #515151;         /* задаем серый цвет кнопки */
-    color: white;                /* задаем белый цвет текста внутри кнопки */
-    font-size: 1.5rem;           /* увеличим размер шрифта */
-    font-family: Arial, Helvetica, sans-serif; /* сменим шрифт */
-    cursor: pointer;             /* при наведении на кнопку курсор будет изменен
-                                    со стрелки на 'указательный палец' */
-    user-select: none;           /* отключаем возможность выделить текст внутри кнопки */
-}
-
-/* hover - это состояние элемента, когда на него наведен курсор */
-.my-btn:hover {
-    background: darkgray; /* при наведение курсора на кнопку, она будет окрашена в серый */
-}
-
-/* active - это состояние активации элемента. В случае кнопки - нажатие на нее */
-.my-btn:active {
-    filter: brightness(130%); /* увеличим интенсивность цвета для эффекта вспышки */
-}
-
-/* селектор для кнопок первостепенных операций */
-.my-btn.primary {
-    background: #1079baf4; /* цвет кнопки оранжевый */
-}
-
-/* селектор для кнопок второстепенных операций */
-.my-btn.secondary {
-    background: #a6a6a6; /* цвет кнопки сервый */
-}
-
-/* селектор для кнопки расчета выражения (=) */
-.my-btn.execute {
-    width: 110px;          /* сделаем кнопку шире других */
-    border-radius: 34px;   /* подкорректируем округлость */
-}
-
-/* селектор для поля вывода результата */
-.result {
-    width: 220px;
+    width: 50px;
     height: 50px;
-    margin-bottom: 15px;         /* отступ снизу */
-    padding-right: 10px;         /* выступ справа */
-    background: rgb(73, 73, 73); /* цвет можно задавать и таким образом */
-    text-align: right;           /* примагнитим текст к правой стороне */
-    color: #ffffff;              /* цвет текста белый */
+    border-radius: 50%;
+    border: none;
+    background: #515151;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    user-select: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+#btn_op_equal {
+    margin-right: 5px;
+    margin-top: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: #7b2b2b;
+    color: white;
     font-size: 1.5rem;
     font-family: Arial, Helvetica, sans-serif;
-    line-height: 50px;           /* для вертикального центрирования текста */
+    cursor: pointer;
+    user-select: none;
+}
+
+.my-btn:hover {
+    background: darkgray;
+}
+
+.my-btn:active {
+    filter: brightness(130%);
+}
+
+.my-btn.primary {
+    background: #1079baf4;
+}
+
+.my-btn.secondary {
+    background: #a6a6a6;
+}
+
+.my-btn.execute {
+    width: 110px;
+    border-radius: 34px;
+}
+
+.result {
+    width: 220px;
+    height: 60px;
+    margin-bottom: 15px;
+    padding: 0 15px;
+    background: #494949;
+    text-align: right;
+    color: #ffffff;
+    font-size: 2rem;
+    line-height: 60px;
+    border-radius: 8px;
+    /* Ограничение текста */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
 }
 
 h1 {
@@ -61,9 +74,8 @@ h1 {
     font-size: 2rem;
 }
 
-/* Стили для шапки (без картинки) */
 .hero {
-    background-color: #ffffff;     /* светлый фон как в основном файле */
+    background-color: #ffffff;
     border-bottom: 2px solid #ffffff;
     padding: 15px 0;
     width: 100%;
@@ -78,20 +90,17 @@ h1 {
     gap: 20px;
 }
 
-/* Контейнер для логотипа и текста */
 .logo-container {
     display: flex;
     gap: 15px;
 }
 
-/* Стили для картинки-логотипа */
 .logo-image {
     width: 90px;
     height: auto;
     object-fit: contain;
 }
 
-/* Текст логотипа в 3 строки */
 .logo-text {
     font-size: 20px;
     font-weight: bold;
@@ -102,7 +111,6 @@ h1 {
     font-family: monospace;
 }
 
-/* Навигационные кнопки */
 .nav-links {
     display: flex;
     gap: 30px;
@@ -123,7 +131,6 @@ h1 {
     color: #000;
 }
 
-/* Общие сбросы */
 * {
     margin: 0;
     padding: 0;
@@ -131,48 +138,30 @@ h1 {
 }
 
 body {
-    background-color: white;  /* белый фон как в основном файле */
+    background-color: white;
     min-height: 100vh;
 }
 
-/* Основной контейнер для центрирования калькулятора */
-.calculator-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: calc(100vh - 170px); /* высота = вся страница минус шапка */
-    padding: 40px 20px;
-    background-color: white;  /* белый фон */
-}
+ц21
 
-/* Контейнер для калькулятора - белая подложка */
-.calculator-container {
-    width: fit-content;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: rgba(36, 230, 59, 0.592);  /* белый фон */
-}
 
-/* Заголовок калькулятора */
 .calculator-title {
     font-family: monospace;
-    color: #4e4b4b;           /* темно-серый как в логотипе */
+    color: #4e4b4b;
     font-size: 2rem;
     text-align: center;
     margin-bottom: 30px;
     max-width: 800px;
 }
 
-/* Сетка кнопок */
 .calculator-buttons {
     display: flex;
     flex-direction: column;
-    gap: 0;                   /* убираем gap, используем margin от кнопок */
+    gap: 8px;
 }
 
 .button-row {
     display: flex;
-    gap: 0;                   /* убираем gap, используем margin от кнопок */
+    gap: 8px;
     justify-content: center;
 }
