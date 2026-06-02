@@ -1,84 +1,212 @@
-**ОТЧЕТ ПО СТИЛЯМ CSS**
+# Лабораторная работа 5: Добаление AJAX запросов к API.
+# Содержание
 
-**1. УНИВЕРСАЛЬНЫЕ СТИЛИ (СБРОС)**
-- `*` - отключает отступы у всех элементов
-- `box-sizing: border-box` - меняет расчет ширины с учетом границ
+* [Цель работы](#цель-работы)
+* [Задание](#задание)
+    * [Основное задание](#основное-задание)
+    * [Дополнительное задание](#дополнительное-задание)
 
-**2. СТИЛИ ТЕЛА ДОКУМЕНТА**
-- `body` - белый фон, минимальная высота на весь экран
+## Цель работы
+Цель данной лабораторной работы - взаимодействие с внешним API через XMLHttpRequest. В ходе выполнения работы, вам предстоит ознакомиться с кодом реализации простого взаимодействия с внешним API, получение данных и вывод их в интерфейс пользователя, и затем выполнить задания по варианту.
+## Задание
+## Основное задание
+Продолжение Лабораторной работы 3: добавить страницу добавления/редактирования и соответствующие кнопки, подключение к созданному API бэкенду. Запросы XHR, Cors обойти через расширение браузера CORS Unblock.
 
-**3. СТИЛИ ШАПКИ (.hero)**
-- На главной: фоновое изображение на всю ширину
-- На калькуляторе: белый фон с серой границей снизу
 
-**4. КОНТЕЙНЕР ШАПКИ (.hero-content)**
-- Центрирование по центру страницы
-- Вертикальное расположение элементов (колонка)
 
-**5. БЛОК ЛОГОТИПА (.logo-container)**
-- Горизонтальное расположение картинки и текста
-- Отступ между элементами 15px
+Добавляется папка modules с файлами ajax.js и stockUrls.js
+Структура проекта:
 
-**6. КАРТИНКА ЛОГОТИПА (.logo-image)**
-- Ширина 90 пикселей
-- Автоматическая высота
+```
+/index.html
+/css/main.css
+/components/
+  /footer/index.js/
+  /header/index.js/
+  /product-card/index.js
+/pages/
+  /author/index.js/
+  /product/index.js/
+  /calc/index.js/
+  /main/index.js/
+  /sms/index.js/
+/modules/
+  /ajax.js/
+  /stockUrls.js/
+/my-api-service/
+    /src/
+        /controllers/stocksControllers.js/
+        /data/stocks.json/
+        /routes/stocks.js/
+        /services/fileService.js
+        /services/stocksService.js
+        /index.js/
+    /package-lock.json/
+    /package.json/
+/index.html/
+/main.js/
+/package-lock.json/
+```
 
-**7. ТЕКСТ ЛОГОТИПА (.logo-text)**
-- Размер шрифта 20px, жирный
-- Моноширинный шрифт, заглавные буквы
-- Серый цвет (#4e4b4b)
+ajax.js
+```js
+class Ajax {
+    _sendRequest(method, url, data, callback) {
+        const xhr = new XMLHttpRequest();
+        xhr.open(method, url, true);
 
-**8. НАВИГАЦИОННЫЕ КНОПКИ (.nav-links)**
-- Горизонтальное расположение (Flexbox)
-- Расстояние между кнопками 30px
+        if (data) {
+            xhr.setRequestHeader('Content-Type', 'application/json');
+        }
 
-**9. ССЫЛКИ-КНОПКИ (.nav-button)**
-- Без подчеркивания, серый текст
-- При наведении - серый фон
+        xhr.onload = () => {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                let parsedData = null;
+                if (xhr.responseText) {
+                    try {
+                        parsedData = JSON.parse(xhr.responseText);
+                    } catch (e) {
+                        console.error('Ошибка парсинга JSON:', e);
+                    }
+                }
+                if (callback) callback(parsedData);
+            } else {
+                console.error(`Ошибка HTTP: ${xhr.status}`);
+                if (callback) callback(null);
+            }
+        };
 
-**10. ЗАГОЛОВКИ (h1)**
-- Моноширинный шрифт
-- На главной: белый, огромный размер (4rem)
-- На калькуляторе: серый, средний размер (2rem)
+        xhr.onerror = () => {
+            console.error('Ошибка сети / Блокировка CORS');
+            if (callback) callback(null); // Вызываем колбэк даже при ошибке CORS
+        };
 
-**11. КНОПКА ЗАКАЗА (.order-button)**
-- Зеленая, круглая (35px)
-- Крупный шрифт (2rem), белый текст
+        xhr.send(data ? JSON.stringify(data) : null);
+    }
 
-**12. ОСНОВНОЙ БЛОК КАЛЬКУЛЯТОРА (.calculator-main)**
-- Центрирование по центру экрана
-- Белый фон
+    get(url, callback) {
+        this._sendRequest('GET', url, null, callback);
+    }
 
-**13. КОНТЕЙНЕР КАЛЬКУЛЯТОРА (.calculator-container)**
-- Зеленая подложка (полупрозрачная)
-- Внутренние отступы 20px
+    post(url, data, callback) {
+        this._sendRequest('POST', url, data, callback);
+    }
 
-**14. ЗАГОЛОВОК КАЛЬКУЛЯТОРА (.calculator-title)**
-- Моноширинный шрифт
-- Серый цвет, текст по центру
+    patch(url, data, callback) {
+        this._sendRequest('PATCH', url, data, callback);
+    }
 
-**15. ПОЛЕ ВЫВОДА (.result)**
-- Серый прямоугольник (220x50px)
-- Текст прижат к правому краю
-- Белый цвет текста
+    delete(url, callback) {
+        this._sendRequest('DELETE', url, null, callback);
+    }
+}
 
-**16. СЕТКА КНОПОК (.calculator-buttons)**
-- Вертикальное расположение строк
+export const ajax = new Ajax();
 
-**17. СТРОКА КНОПОК (.button-row)**
-- Горизонтальное расположение
-- Кнопки выровнены по центру
+```
+stockUrls.js
+```js
+class StockUrls {
+    constructor() {
+        this.baseUrl = 'http://localhost:3000';
+    }
 
-**18. БАЗОВЫЙ СТИЛЬ КНОПКИ (.my-btn)**
-- Размер 50x50px, круглая
-- Серый фон, белый текст
-- Курсор-указатель при наведении
+    getStocks() {
+        return `${this.baseUrl}/stocks`;
+    }
 
-**19. СОСТОЯНИЯ КНОПКИ**
-- `:hover` - темно-серый фон при наведении
-- `:active` - эффект вспышки при нажатии
+    getStockById(id) {
+        return `${this.baseUrl}/stocks/${id}`;
+    }
 
-**20. ТИПЫ КНОПОК**
-- `.my-btn.primary` - синий/оранжевый цвет (операции)
-- `.my-btn.secondary` - светло-серый цвет (доп. функции)
-- `.my-btn.execute` - широкая кнопка (110px) для "="
+    createStock() {
+        return `${this.baseUrl}/stocks`;
+    }
+
+    removeStockById(id) {
+        return `${this.baseUrl}/stocks/${id}`;
+    }
+
+    updateStockById(id) {
+        return `${this.baseUrl}/stocks/${id}`;
+    }
+}
+
+export const stockUrls = new StockUrls();
+
+```
+Из-за конфликта портов используем CORS unblock:
+![alt text](image.png)
+
+Добавление кнопки редактирования карточки:
+```js
+import { ajax } from '../../modules/ajax.js';
+import { stockUrls } from '../../modules/stockUrls.js';
+
+export const ProductEditPage = (root, id) => {
+    root.innerHTML = `
+        <div class="product-details-card edit-card-container">
+            <h2 class="product-title" id="page-title">${id ? 'Редактирование услуги' : 'Добавление новой услуги'}</h2>
+
+            <div class="form-group">
+                <label class="form-label">Название чата:</label>
+                <input type="text" id="input-title" class="search-input form-input" placeholder="Введите название...">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Описание:</label>
+                <textarea id="input-text" class="search-input form-textarea" placeholder="Введите описание..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Количество участников:</label>
+                <input type="number" id="input-members" class="search-input form-input" placeholder="0">
+            </div>
+
+            <hr>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <button id="save-btn" class="btn-edit btn-full-width">Сохранить</button>
+                <button id="back-btn" class="btn-detail btn-full-width">Назад к списку чатов</button>
+            </div>
+        </div>
+    `;
+
+    const titleInput = root.querySelector('#input-title');
+    const textInput = root.querySelector('#input-text');
+    const membersInput = root.querySelector('#input-members');
+
+    if (id) {
+        ajax.get(stockUrls.getStockById(id), (product) => {
+            if (product) {
+                titleInput.value = product.title || '';
+                textInput.value = product.text || '';
+                membersInput.value = product.members || 0;
+                root.querySelector('#page-title').innerText = `Редактирование услуги #${id}`;
+            }
+        });
+    }
+
+    root.querySelector('#save-btn').onclick = () => {
+        const dataToSave = {
+            title: titleInput.value,
+            text: textInput.value,
+            members: parseInt(membersInput.value) || 0
+        };
+
+        const onComplete = () => {
+            window.location.hash = '#main';
+        };
+
+        if (id) {
+            ajax.patch(stockUrls.updateStockById(id), dataToSave, onComplete);
+        } else {
+            ajax.post(stockUrls.createStock(), dataToSave, onComplete);
+        }
+    };
+
+    root.querySelector('#back-btn').onclick = () => { window.location.hash = '#main'; };
+};
+```
+## Дополнительное задание
+
+Ответить на теоретические вопросы преподавателя
